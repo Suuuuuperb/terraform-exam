@@ -1,19 +1,8 @@
-terraform {
-  required_providers {
-    aws = {
-        soursource = "hashicorp/aws"
-        version = "~> 3.0"
-    }
-  }
-}
-
 provider "aws" {
   region = var.region
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-  tags = {
-    Name = "dev"
-  }
+resource "aws_instance" "example" {
+  ami           = "ami-013218fccb68a90d4"
+  instance_type = "t2.micro"
 }
