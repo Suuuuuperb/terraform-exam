@@ -1,4 +1,5 @@
 import "tfconfig/v2" as tfconfig
+import "tfplan"
 import "strings"
 import "types"
 
