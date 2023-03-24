@@ -12,7 +12,7 @@ print ("tfconfig.provider : ", tfconfig.providers)
 print ("tfconfig.variables : ", tfconfig.variables)
 
 if ((length(tfconfig.providers) else 0) > 0) {
-  provider = tfconfig.providers
+  providers = tfconfig.providers
   if "aws" in keys(providers) {
     aws = tfconfig.providers.aws
     aliases = aws["alias"]
