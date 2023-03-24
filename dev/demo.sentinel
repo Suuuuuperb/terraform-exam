@@ -21,7 +21,6 @@ if ((length(tfconfig.providers) else 0) > 0) {
     print ("regionValues : ", regionValues)
     for regionValues as region, data {
       print ("data : ", data)
-      strings.
       if data == "var.region" {
         variables = tfconfig.variables
         defaultRegion = variables["region"]["default"]
