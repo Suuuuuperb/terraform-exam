@@ -17,7 +17,7 @@ if ((length(tfconfig.providers) else 0) > 0) {
     aliases = aws["alias"]
     for aliases as alias, data {
       print ( "alias is: ", alias )
-      region = data["config"]["region"]
+      region = data["references"]["region"]
       print ("region : ", region)
     }
   }
