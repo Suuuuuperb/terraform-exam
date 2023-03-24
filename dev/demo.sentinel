@@ -34,7 +34,7 @@ if ((length(tfconfig.providers) else 0) > 0) {
       	    # print ( "Value of region is: ", region[0] )
       	    # region_value = region
             # region_values += [region_value]
-    	}
+    	# }
      }
   }
 }
