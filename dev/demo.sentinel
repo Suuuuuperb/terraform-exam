@@ -10,6 +10,10 @@ allowed_regions = "ap-northeast-1"
 
 print("tfconfig.provider : ", tfconfig.providers)
 
+if ((length(tfconfig.providers) else 0) > 0) {
+  print("here true")
+}
+
 
 # Iterate through all AWS providers in root module
 # if ((length(tfconfig.providers) else 0) > 0) {
