@@ -12,31 +12,31 @@ print("tfconfig.provider : ", tfconfig.providers)
 
 
 # Iterate through all AWS providers in root module
-if ((length(tfconfig.providers) else 0) > 0) {
-  providers = tfconfig.providers
-  if "aws" in keys(providers) {
-    aws = tfconfig.providers.aws
-    aliases = aws["alias"]
-    for aliases as alias, data {
-      print ( "alias is: ", alias )
-      region = data["config"]["region"]
-    	if region matches "\\$\\{var\\.(.*)\\}" {
-          # AWS provider was configured with variable
-      	  print ( "region is a variable" )
-      	  region_variable = strings.trim_suffix(strings.trim_prefix(region, "${var."), "}")
-      	  print ( "region variable is: ", region_variable )
-      	  print ( "Value of region is: ", tfplan.variables[region_variable] )
-      	  region_value = tfplan.variables[region_variable]
-          region_values += [region_value]
-    	} else {
-            print ( "region is a hard-coded value" )
-      	    print ( "Value of region is: ", region )
-      	    region_value = region
-            region_values += [region_value]
-    	}
-     }
-  }
-}
+# if ((length(tfconfig.providers) else 0) > 0) {
+#   providers = tfconfig.providers
+#   if "aws" in keys(providers) {
+#     aws = tfconfig.providers.aws
+#     aliases = aws["alias"]
+#     for aliases as alias, data {
+#       print ( "alias is: ", alias )
+#       region = data["config"]["region"]
+#     	if region matches "\\$\\{var\\.(.*)\\}" {
+#           # AWS provider was configured with variable
+#       	  print ( "region is a variable" )
+#       	  region_variable = strings.trim_suffix(strings.trim_prefix(region, "${var."), "}")
+#       	  print ( "region variable is: ", region_variable )
+#       	  print ( "Value of region is: ", tfplan.variables[region_variable] )
+#       	  region_value = tfplan.variables[region_variable]
+#           region_values += [region_value]
+#     	} else {
+#             print ( "region is a hard-coded value" )
+#       	    print ( "Value of region is: ", region )
+#       	    region_value = region
+#             region_values += [region_value]
+#     	}
+#      }
+#   }
+# }
 
 # Print all regions found in AWS providers
 print ( "region_values is: ", region_values )
