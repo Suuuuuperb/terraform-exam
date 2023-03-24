@@ -1,7 +1,6 @@
 import "tfconfig"
 import "tfplan"
 import "strings"
-import "reflect"
 
 # Initialize array of regions found in AWS providers
 region_values = []
