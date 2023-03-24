@@ -19,7 +19,7 @@ if ((length(tfconfig.providers) else 0) > 0) {
     for aliases as alias, data {
       print ( "alias is: ", alias )
       region = data["references"]["region"]
-    	if region matches "\\$\\{var\\.(.*)\\}" {
+    	if region[0] matches "\\$\\{var\\.(.*)\\}" {
           # AWS provider was configured with variable
       	  print ( "region is a variable" )
       	  region_variable = strings.trim_suffix(strings.trim_prefix(region, "${var."), "}")
