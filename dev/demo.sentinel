@@ -10,6 +10,7 @@ allowed_regions = "ap-northeast-1"
 
 print ("tfconfig.provider : ", tfconfig.providers)
 print ("tfconfig.variables : ", tfconfig.variables)
+print ("tfplan.variables : ", tfplan.variables)
 
 if ((length(tfconfig.providers) else 0) > 0) {
   providers = tfconfig.providers
@@ -19,6 +20,11 @@ if ((length(tfconfig.providers) else 0) > 0) {
     print ("regionValues : ", regionValues)
     for regionValues as region, data {
       print ("data : ", data)
+      if data matches "\\$\\{var\\.(.*)\\}" {
+        variables = tfconfig.variables
+        defaultRegion = variables["region"]["default"]
+        print ("default region : ", defaultRegion)
+      }
     }  
     # for aliases as alias, data {
     #   print ("data : ", data)
