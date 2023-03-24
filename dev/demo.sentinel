@@ -11,6 +11,21 @@ allowed_regions = "ap-northeast-1"
 print ("tfconfig.provider : ", tfconfig.providers)
 print ("tfconfig.variables : ", tfconfig.variables)
 
+if ((length(tfconfig.providers) else 0) > 0) {
+  provider = tfconfig.providers
+  if "aws" in keys(providers) {
+    aws = tfconfig.providers.aws
+    aliases = aws["alias"]
+    for aliases as alias, data {
+      print ("data : ", data)
+      # region = data["references"]["region"]
+      # if region matches "\\$\\{var\\.(.*)\\}" {
+
+      # }
+    }
+  }
+}
+
 # Iterate through all AWS providers in root module
 # if ((length(tfconfig.providers) else 0) > 0) {
 #   providers = tfconfig.providers
