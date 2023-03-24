@@ -15,8 +15,11 @@ if ((length(tfconfig.providers) else 0) > 0) {
   if "aws" in keys(providers) {
     aws = tfconfig.providers.aws
     aliases = aws["alias"]
-    print ("aws : ", aws)
-    print ("aliases : ", aliases)
+    for aliases as alias, data {
+      print ( "alias is: ", alias )
+      region = data["config"]["region"]
+      print ("region : ", region)
+    }
   }
 }
 
