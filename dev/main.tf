@@ -69,8 +69,9 @@ resource "aws_security_group" "tfc_kthong_sec_grp" {
 resource "aws_instance" "tfc_kthong_ec2" {
   ami           = var.ami
   instance_type = "t2.micro"
-  security_groups = [aws_security_group.tfc_kthong_sec_grp.name]
-  associate_public_ip_address = true
+  subnet_id = aws_subnet.tfc_kthong_subnet_A.id
+  # security_groups = [aws_security_group.tfc_kthong_sec_grp.name]
+  # associate_public_ip_address = true
     tags = {
     Name = "tfc_kthong_ec2"
   }
