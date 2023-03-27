@@ -28,7 +28,7 @@ resource "aws_default_vpc" "tfc_kthong_vpc" {
 }
 
 resource "aws_subnet" "tfc_kthong_subnet_A" {
-  vpc_id = aws_default_vpc.default_vpc.id
+  vpc_id = aws_default_vpc.tfc_kthong_vpc.id
   cidr_block = "10.0.0.0/24"
   availability_zone = "ap-northeast-2a"
   tags = {
@@ -37,7 +37,7 @@ resource "aws_subnet" "tfc_kthong_subnet_A" {
 }
 
 resource "aws_subnet" "tfc_kthong_subnet_B" {
-  vpc_id = aws_default_vpc.default_vpc.id
+  vpc_id = aws_default_vpc.tfc_kthong_vpc.id
   cidr_block = "10.0.10.0/24"
   availability_zone = "ap-northeast-2b"
   tags = {
@@ -47,7 +47,7 @@ resource "aws_subnet" "tfc_kthong_subnet_B" {
 
 resource "aws_security_group" "tfc_kthong_sec_grp" {
   name        = "tfc_kthong_sec_grp"
-  vpc_id = aws_default_vpc.default_vpc.id
+  vpc_id = aws_default_vpc.tfc_kthong_vpc.id
 
   ingress {
     from_port        = 80
