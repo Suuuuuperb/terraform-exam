@@ -41,6 +41,7 @@ resource "aws_subnet" "tfc_kthong_subnet_B" {
 
 resource "aws_security_group" "tfc_kthong_sec_grp" {
   name        = "tfc_kthong_sec_grp"
+  vpc_id = "${aws_vpc.main.id}"
 
   ingress {
     from_port        = 80
@@ -62,6 +63,7 @@ resource "aws_security_group" "tfc_kthong_sec_grp" {
 resource "aws_instance" "tfc_kthong_ec2" {
   ami           = var.ami
   instance_type = "t2.micro"
+  vpc_security_group_ids      = ["${aws_security_group.bastion-sg.id}"]
     tags = {
     Name = "tfc_kthong_ec2"
   }
