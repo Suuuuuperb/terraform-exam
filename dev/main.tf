@@ -14,16 +14,18 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_default_vpc" "default_vpc" {
 
+
+resource "aws_vpc" "tfc_kthong_vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    "Name" = "tfc_kthong_vpc"
+  }
 }
 
-# resource "aws_vpc" "tfc_kthong_vpc" {
-#   cidr_block = "10.0.0.0/16"
-#   tags = {
-#     "Name" = "tfc_kthong_vpc"
-#   }
-# }
+resource "aws_default_vpc" "tfc_kthong_vpc" {
+  id = aws_vpc.tfc_kthong_vpc
+}
 
 resource "aws_subnet" "tfc_kthong_subnet_A" {
   vpc_id = aws_default_vpc.default_vpc.id
